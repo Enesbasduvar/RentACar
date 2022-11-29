@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using DataAccess.Abstract;
+using DataAccess.DTOs;
 using Entities.Concrete;
 
 namespace DataAccess.Concrete.InMemory
@@ -68,5 +69,10 @@ namespace DataAccess.Concrete.InMemory
             carToUpdate.ModelYear = car.ModelYear;
             carToUpdate.Description = car.Description;
 		}
+
+        public List<CarDetailDto> GetCarDetails()
+        {
+	        throw new NotImplementedException();
+        }
     }
 }

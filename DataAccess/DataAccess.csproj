@@ -8,6 +8,7 @@
     <Folder Include="Abstract\" />
     <Folder Include="Concrete\InMemory\" />
     <Folder Include="Concrete\EntityFramework\" />
+    <Folder Include="DTOs\" />
   </ItemGroup>
 
   <ItemGroup>
