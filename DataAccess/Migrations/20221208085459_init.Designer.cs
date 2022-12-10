@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DataAccess.Migrations
 {
     [DbContext(typeof(RentACarContext))]
-    [Migration("20221129062901_mig_1")]
-    partial class mig_1
+    [Migration("20221208085459_init")]
+    partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -62,6 +62,10 @@ namespace DataAccess.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("BrandId");
+
+                    b.HasIndex("ColorId");
+
                     b.ToTable("Cars");
                 });
 
@@ -78,6 +82,35 @@ namespace DataAccess.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Colors");
+                });
+
+            modelBuilder.Entity("Entities.Concrete.Car", b =>
+                {
+                    b.HasOne("Entities.Concrete.Brand", "Brand")
+                        .WithMany("Cars")
+                        .HasForeignKey("BrandId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Entities.Concrete.Color", "Color")
+                        .WithMany("Cars")
+                        .HasForeignKey("ColorId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Brand");
+
+                    b.Navigation("Color");
+                });
+
+            modelBuilder.Entity("Entities.Concrete.Brand", b =>
+                {
+                    b.Navigation("Cars");
+                });
+
+            modelBuilder.Entity("Entities.Concrete.Color", b =>
+                {
+                    b.Navigation("Cars");
                 });
 #pragma warning restore 612, 618
         }
