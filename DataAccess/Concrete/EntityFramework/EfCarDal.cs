@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace DataAccess.Concrete.EntityFramework
 {
-	public class EfCarDal : EfEntityrepositoryBase<Car, RentACarContext>, ICarDal
+	public class EfCarDal : EfEntityRepositoryBase<Car, RentACarContext>, ICarDal
 	{
 		public List<CarDetailDto> GetCarDetails()
 		{
@@ -23,7 +23,7 @@ namespace DataAccess.Concrete.EntityFramework
 								 on c.ColorId equals color.Id
 							 select new CarDetailDto
 							 {
-								 CarName = c.CarName, BrandName = b.BrandName, ColorName = color.ColorName, DailyPrice = c.DailyPrice
+								 Id = c.Id,CarName = c.CarName, BrandName = b.BrandName, ColorName = color.ColorName, DailyPrice = c.DailyPrice
 							 };
 				return result.ToList();
 			}

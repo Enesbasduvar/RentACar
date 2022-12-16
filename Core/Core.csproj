@@ -5,7 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="DataAccess\EntityFramework\" />
     <Folder Include="Utilities\Results\" />
   </ItemGroup>
 
